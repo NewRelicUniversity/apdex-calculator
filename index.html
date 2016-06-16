@@ -1,0 +1,118 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+	<title>Getting Started with New Relic APM - Apdex Calculator</title>
+
+	<link rel="stylesheet" href="./css/main.css" />
+	<script src="./js/jquery.tools.min.js"></script>
+	<script src="./js/apdex-calculator.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<nav class="site" id="nav-header">
+		<span class="logo">
+			<img alt="New Relic" src="./assets/logo_46.png">
+		</span>
+	</nav>
+	<div class="wrapper">
+		<section class="page-content">
+			<h2>Apdex Calculator</h2>
+			<p>Given the response times and threshold value below, calculate the Apdex. Enter your answer in the <i>My Apdex</i> field, then click <i>Am I Right?</i> to check your work.</p>
+
+			<h4>Response Times (milliseconds)</h4>
+			<table style="width: 70%; margin-bottom: 18pt"><tbody id="metrics"></tbody></table>
+
+			<label>Threshold (apdex_t): </label>
+			<input id="apdex_t" type="text" style="text-align: right; margin-bottom: 6pt; margin-left: 6pt; width: 3em" value="1000" /><br />
+
+			<label>My Apdex: </label>
+			<input id="apdex" type="text" style="text-align: right; margin-bottom: 12pt; margin-left: 6pt; width: 3em" />
+            <span id="apdex-error" style="display: none">Please enter your Apdex calculation.</span><br />
+
+			<input id="calculate" type="button" value="Am I Right?" />
+      <a href="#" onclick="return showMe();" style="margin-left: 1.4em">Give me a hint.</a>
+      <div class="overlay" id="feedback">
+          <h2 id="feedback-heading" style="text-align: center"></h2>
+          <p style="font-size: 16pt">
+              <label>Actual Apdex:</label><span id="feedback-apdex" style="font-weight:  bold"></span><br />
+              <label>You said:</label><span id="feedback-user-apdex" style="font-weight:  bold"></span>
+          </p>
+          <p style="font-size: 16pt; margin-top: 18pt">
+              <a href="#" class="showme" onclick="return showMe();">Click here to see how the Apdex was calculated.</a>
+          </p>
+      </div>
+
+      <div id="showme">
+          <hr />
+          <h3>How Apdex is Calculated</h3>
+          <table style="margin-top: 12pt; width: 100%">
+              <tbody>
+                  <tr>
+                      <td>
+                          <div id="satisfied">
+                              <table><tbody class="values"></tbody></table>
+                          </div>
+                          <p style="margin-top: 4pt; font-weight: bold">Satisfied</p>
+                      </td>
+                      <td>
+                          <div id="tolerating">
+                              <table><tbody class="values"></tbody></table>
+                          </div>
+                          <p style="margin-top: 4pt; font-weight: bold">Tolerating</p>
+                      </td>
+                      <td>
+                          <div id="frustrated">
+                              <table><tbody class="values"></tbody></table>
+                          </div>
+                          <p style="margin-top: 4pt; font-weight: bold">Frustrated</p>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+
+          <table style="margin-top: 12pt; width: 100%">
+              <tbody>
+                  <tr>
+                      <td style="text-align: right; padding-right: 12pt; padding-top: 10pt; width: 11em">
+                          Apdex =
+                      </td>
+                      <td style="padding-right: 20%; width: 75%">
+                          <table>
+                              <tbody>
+                                  <tr style="border-bottom: 2px solid black">
+                                      <td>
+                                          Satisfied Count + (Tolerating Count / 2)
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          Total Number of Samples
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+
+          <p><i>Tip:</i> Try changing the threshold to see how it affects the Apdex.</p>
+      </div>
+		</section>
+		<div class="clear"></div>
+		<footer class="page-footer">
+
+		</footer>
+	</div>
+</body>
+</html>
