@@ -106,6 +106,8 @@ function displayFeedback() {
             'speed' : 'fast',
             'load': true
         }).load();
+
+		doPageAction(apdex, userApdex);
     }
 }
 
@@ -133,6 +135,18 @@ function populateMetricTable(metrics, table) {
         }
 	}
     if (j > 1) table.append(row);
+}
+
+function doPageAction(apdex, userApdex) {
+	var neededHint = $('#showme').is(':visible');
+	newrelic.addPageAction('apdexCalculator', 
+		{
+			apdex: apdex, 
+			userApdex: userApdex, 
+			isCorrect: (apdex == userApdex).toString(), 
+			neededHint: neededHint.toString()
+		}
+	);
 }
 
 function init() {
