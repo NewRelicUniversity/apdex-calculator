@@ -4,7 +4,7 @@ This Apdex Calculator teaches people how Apdex works by letting them practice ca
 
 ![](screenshots/apdex-calculator.png)
 
-See it in action here: http://apdex.getforge.io/
+See it in action here: https://newrelicuniversity.github.io/apdex-calculator/
 
 ## Usage
 
