@@ -786,7 +786,7 @@
 }
 
 .overlay .close {
-    background-image: url('images/close.png');
+    background-image: url('assets/images/close.png');
     position: absolute;
     right: -15px;
     top: -15px;
